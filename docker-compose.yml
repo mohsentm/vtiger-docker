@@ -1,0 +1,25 @@
+version: '3.0'
+services:
+  web:
+    image: becopay/vtigercrm
+    volumes:
+      - ./vtigercrm:/var/www/html
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    env_file:
+      - env
+  db:
+    image: mysql:5.6.23
+    volumes:
+      - ./db/config/my.cnf:/etc/mysql/my.cnf
+      - ./db/mysql/:/var/lib/mysql
+    env_file:
+      - env
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8583:80"
+    depends_on:
+      - db     
