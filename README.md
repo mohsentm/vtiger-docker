@@ -60,7 +60,9 @@ The default `docker-compose.yml` uses MySQL as the database and starts [phpMyAdm
 ## Backup Configuration
 
 Vtiger files exist on `vitgercrm` directory and database file will store on `db/mysql` directory.
-for get database and full backup you can use this bash script (`db-backup.sh`,`full-backup.sh`). set cron for get automatically backup
+for get database and full backup you can use this bash script (`db-backup.sh`,`full-backup.sh`). set cron for get automatically backup.
+
+__NOTE:__ Default directory for save the back file is `/home/test/CRM_Backup`. for change the default directory edit this bash script and change the `BACKUP_DIR` values. e.p. `BACKUP_DIR:"YOUR_PATH"`
 ```
 # database backup once a day
 0 0 * * * PROJECT_PATH/db-backup.sh
