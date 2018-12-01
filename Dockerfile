@@ -1,10 +1,8 @@
 FROM php:5.6-apache
 
-LABEL maintainer="io@becopay.com"
+LABEL maintainer="hosseini.m1370@gmail.com"
 LABEL version="7.1.0"
 LABEL description="Vtiger crm"
-
-ENV VERSION 7.1.0
 
 ENV INSTALL_DIR /var/www/html
 
@@ -59,7 +57,7 @@ RUN { \
         echo 'suhosin.simulation=On'; \
     } > /usr/local/etc/php/conf.d/vtiger-recommended.ini
 
-# setting the reccomended for opcache
+# setting the reccomended for apcache
 # https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
         echo 'opcache.memory_consumption=128'; \
@@ -71,20 +69,6 @@ RUN { \
 } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 RUN chsh -s /bin/bash www-data
-
-#RUN cd /tmp && \ 
-#  wget https://sourceforge.net/projects/vtigercrm/files/vtiger%20CRM%207.0.1/Core%20Product/vtigercrm7.0.1.tar.gz && \
-#  tar xzf vtigercrm7.0.1.tar.gz  &&\
-#  mv vtigercrm/* $INSTALL_DIR
-
-#RUN chown -R www-data:www-data /var/www
-
-#RUN cd $INSTALL_DIR \
-#    && find . -type d -exec chmod 775 {} \; \
-#    && find . -type f -exec chmod 664 {} \; 
-
-
-#RUN rm -rf /tmp/*
 
 # Add cron job
 ADD crontab /etc/cron.d/vtigercrm-cron
