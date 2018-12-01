@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   web:
-    image: becopay/vtigercrm
+    image: mohsentm/vtigercrm
     volumes:
       - ./vtigercrm:/var/www/html
     ports:
